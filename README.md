@@ -66,10 +66,16 @@ username=admin&password=123456&Login=Login
 
 Evidência de Inspeção de Rede:
 
-Figura 1: Captura do painel DevTools mostrando os parâmetros exatos do formulário enviado ao servidor.
+Captura do painel DevTools mostrando os parâmetros exatos do formulário enviado ao servidor:
 
-5. Execução do Ataque de Força Bruta
+![Principais Comandos Linux](./painel_dvwa.png)
+
+![Principais Comandos Linux](./painel.png)
+
+# 5. Execução do Ataque de Força Bruta
+
 5.1 Preparação do Ambiente
+
 Inicialmente, realizou-se a descompactação da wordlist rockyou.txt nativa do Kali Linux:
 
 ```bash
