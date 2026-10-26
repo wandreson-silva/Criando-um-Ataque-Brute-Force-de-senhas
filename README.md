@@ -190,4 +190,7 @@ Execute o script via terminal:
 python3 brute_force_dvwa.py
 
 ```
+Resultado:
+
+![Principais Comandos Linux](./saida2.png)
 
