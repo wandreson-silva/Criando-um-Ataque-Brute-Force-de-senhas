@@ -70,7 +70,9 @@ Captura do painel DevTools mostrando os parâmetros exatos do formulário enviad
 
 ![Principais Comandos Linux](./painel_dvwa.png)
 
-![Principais Comandos Linux](./painel.png)
+![Principais Comandos Linux](./Painel.png)
+
+![Principais Comandos Linux](./painel2.png)
 
 # 5. Execução do Ataque de Força Bruta
 
