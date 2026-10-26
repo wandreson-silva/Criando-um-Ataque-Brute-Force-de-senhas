@@ -1,6 +1,6 @@
 # 🛡️ Relatório Técnico: Teste de Força Bruta em Autenticação Web (DVWA)
 
-Documentação prática de teste de segurança e auditoria de autenticação contra o Damn Vulnerable Web Application (DVWA) hospedado no Metasploitable2, demonstrando a identificação de vulnerabilidades em formulários de login e propondo controles defensivos.
+1. Documentação prática de teste de segurança e auditoria de autenticação contra o Damn Vulnerable Web Application (DVWA) hospedado no Metasploitable2, demonstrando a identificação de vulnerabilidades em formulários de login e propondo controles defensivos.
 
 
 📋 Sumário
@@ -107,23 +107,23 @@ Login bem sucedido:
 
 # 6. Vulnerabilidades Identificadas
 
-1.Uso de Credenciais Padrão (CWE-1391): O sistema manteve a senha padrão de fábrica (password), permitindo a contaminação e o acesso administrativo imediato.
+1. Uso de Credenciais Padrão (CWE-1391): O sistema manteve a senha padrão de fábrica (password), permitindo a contaminação e o acesso administrativo imediato.
 
-2.Ausência de Rate Limiting (CWE-307): A aplicação aceita milhares de requisições por segundo sem aplicar restrições temporárias ou bloqueio de IP.
+2. Ausência de Rate Limiting (CWE-307): A aplicação aceita milhares de requisições por segundo sem aplicar restrições temporárias ou bloqueio de IP.
 
-3.Ausência de Desafios CAPTCHA: Permite a automação irrestrita do formulário por ferramentas como Hydra e Burp Suite.
+3. Ausência de Desafios CAPTCHA: Permite a automação irrestrita do formulário por ferramentas como Hydra e Burp Suite.
 
 # 7. Medidas de Mitigação
 
 Para sanar as falhas apontadas, recomenda-se a aplicação das seguintes diretrizes de segurança:
 
-1.Política de Senhas Fortes: Forçar a alteração de senhas padrão no primeiro acesso e exigir complexidade mínima (maiúsculas, números e caracteres especiais).
+1. Política de Senhas Fortes: Forçar a alteração de senhas padrão no primeiro acesso e exigir complexidade mínima (maiúsculas, números e caracteres especiais).
 
-2.Implementação de Rate Limiting: Bloquear o IP ou usuário após um número limite de tentativas incorretas consecutivas (ex: 5 tentativas falhas = bloqueio por 15 minutos).
+2. Implementação de Rate Limiting: Bloquear o IP ou usuário após um número limite de tentativas incorretas consecutivas (ex: 5 tentativas falhas = bloqueio por 15 minutos).
 
-3.Integração de CAPTCHA: Adicionar reCAPTCHA v2/v3 para validar que as solicitações de login partem de usuários humanos.
+3. Integração de CAPTCHA: Adicionar reCAPTCHA v2/v3 para validar que as solicitações de login partem de usuários humanos.
 
-4.Autenticação Multifator (MFA): Requerer um segundo fator de autenticação (TOTP/SMS) para mitigar totalmente o impacto de credenciais comprometidas por força bruta.
+4. Autenticação Multifator (MFA): Requerer um segundo fator de autenticação (TOTP/SMS) para mitigar totalmente o impacto de credenciais comprometidas por força bruta.
 
 # 🐍 Script de Automação de Força Bruta (Python)
 
@@ -174,4 +174,20 @@ def attack():
 if __name__ == "__main__":
     attack()
 
-    ```
+```
+    
+# Como clonar/executar este script no seu ambiente de testes:
+Instale a biblioteca requests (caso não tenha):
+
+```text
+pip install requests
+
+Salve o código acima em um arquivo chamado brute_force_dvwa.py.
+```
+Execute o script via terminal:
+
+```
+python3 brute_force_dvwa.py
+
+```
+
