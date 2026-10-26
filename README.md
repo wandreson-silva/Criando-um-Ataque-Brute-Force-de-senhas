@@ -102,6 +102,8 @@ Senha: password
 ```
 Login bem sucedido:
 
+![Principais Comandos Linux](./login_bem_sucedido.png)
+
 
 # 6. Vulnerabilidades Identificadas
 
