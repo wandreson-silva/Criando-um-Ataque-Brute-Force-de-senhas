@@ -100,6 +100,8 @@ Usuário: admin
 
 Senha: password
 ```
+Login bem sucedido:
+
 
 # 6. Vulnerabilidades Identificadas
 
